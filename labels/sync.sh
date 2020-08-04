@@ -1,7 +1,7 @@
 #!/bin/bash
 
 access_token=${1:-$PERSONAL_ACCESS_TOKEN}
-repos="./label-repos"
+repos="./repos"
 
 if [ -z "$access_token" ]; then
   echo "personal access token is required"
