@@ -14,8 +14,8 @@ Add any other context or screenshots about the feature request here.
 
 **Tasks**
 
-- [ ] Something to complete
+- [ ]
 
 **Related Issues**
 
-- Link to related issues
+- Link to an issue e.g., `#1`

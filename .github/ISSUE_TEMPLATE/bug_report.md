@@ -13,11 +13,13 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behavior:
 
 1. Go to '...'
+1.  
+1.  
 
 **Tasks**
 
-- [ ] Something to complete
+- [ ]
 
 **Related Issues**
 
-- Link to related issues
+- Link to an issue e.g., `#1`
