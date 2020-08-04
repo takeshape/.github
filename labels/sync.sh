@@ -1,7 +1,9 @@
 #!/bin/bash
 
+__dirname="${0%/*}"
+
 access_token=${1:-$PERSONAL_ACCESS_TOKEN}
-repos="./repos"
+repos="${__dirname}/repos"
 
 if [ -z "$access_token" ]; then
   echo "personal access token is required"
@@ -9,5 +11,5 @@ if [ -z "$access_token" ]; then
 fi
 
 while IFS= read -r repo; do
-  npx github-label-sync --allow-added-labels --labels labels.yml --access-token $access_token $repo 
+  npx github-label-sync --allow-added-labels --labels labels.yml --access-token $access_token $repo
 done < "$repos"
