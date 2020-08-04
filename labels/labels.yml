@@ -1,16 +1,19 @@
 # Types
 - name: "type: bug 🐛"
   color: "e11d21"
+  description: "Something isn't working"
   aliases:
     - bug
 
 - name: "type: documentation ✏️"
   color: 207de5
+  description: "Improvements or additions to documentation"
   aliases:
     - documentation
 
 - name: "type: feature 🔨"
   color: "009800"
+  description: "New feature or request"
   aliases:
     - enhancement
     - feature
@@ -25,6 +28,7 @@
 
 - name: "type: question"
   color: "cc317c"
+  description: "Further information is requested"
   aliases:
     - question
 
@@ -41,16 +45,19 @@
 # Statuses
 - name: "status: duplicate"
   color: cccccc
+  description: "This issue or pull request already exists"
   aliases:
     - duplicate
 
 - name: "status: help wanted"
   color: bfe5bf
+  description: "Extra attention is needed"
   aliases:
     - "help wanted"
 
 - name: "status: invalid"
   color: cccccc
+  description: "This doesn't seem right"
   aliases:
     - invalid
 
@@ -65,6 +72,7 @@
 
 - name: "status: wontfix"
   color: cccccc
+  description: "This will not be worked on"
   aliases:
     - wontfix
     - "wont-fix"
