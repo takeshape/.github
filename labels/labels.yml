@@ -126,3 +126,64 @@
   color: "7f6b00"
   aliases:
     - "21"
+
+# Packages
+- name: "package: api"
+  color: "ff00db"
+  aliases:
+    - "package-api"
+
+- name: "package: client"
+  color: "ff00db"
+  aliases:
+    - "package-client"
+
+- name: "package: cli"
+  color: "ff00db"
+  aliases:
+    - "package-cli"
+
+- name: "package: actions"
+  color: "ff00db"
+  aliases:
+    - "package-actions"
+
+- name: "package: graphql"
+  color: "ff00db"
+  aliases:
+    - "package-graphql"
+
+- name: "package: routing"
+  color: "ff00db"
+  aliases:
+    - "package-routing"
+
+- name: "package: ssg"
+  color: "ff00db"
+  aliases:
+    - "package-ssg"
+
+- name: "package: schema"
+  color: "ff00db"
+  aliases:
+    - "package-schema"
+
+- name: "package: infra"
+  color: "ff00db"
+  aliases:
+    - "package-infra"
+
+- name: "package: util"
+  color: "ff00db"
+  aliases:
+    - "package-util"
+
+- name: "package: gatsby"
+  color: "ff00db"
+  aliases:
+    - "package-gatsby"
+
+- name: "package: samples"
+  color: "ff00db"
+  aliases:
+    - "package-samples"
