@@ -1,8 +1,8 @@
 ---
-name: Feature request
+name: Feature request 🔨
 about: Describe new features or work to be done.
 title: "[FEATURE]"
-labels: "type: feature"
+labels: "type: feature 🔨"
 assignees: ""
 ---
 

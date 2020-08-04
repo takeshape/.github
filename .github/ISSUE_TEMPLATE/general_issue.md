@@ -1,5 +1,5 @@
 ---
-name: General issue
+name: General issue 🧺
 about: Everything else...
 title: "[GENERAL]"
 labels: ""
