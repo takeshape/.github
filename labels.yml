@@ -1,0 +1,128 @@
+# Types
+- name: "type: bug"
+  color: "e11d21"
+  aliases:
+    - bug
+
+- name: "type: documentation"
+  color: 207de5
+  aliases:
+    - documentation
+
+- name: "type: feature"
+  color: "009800"
+  aliases:
+    - enhancement
+    - feature
+
+- name: "type: maintenance"
+  color: "fbca04"
+  aliases:
+    - maintenance
+    - refactor
+    - testing
+    - test
+
+- name: "type: question"
+  color: "cc317c"
+  aliases:
+    - question
+
+- name: "type: discussion"
+  color: "cc317c"
+  aliases:
+    - discussion
+
+- name: "type: design"
+  color: eb6420
+  aliases:
+    - design
+
+# Statuses
+- name: "status: duplicate"
+  color: cccccc
+  aliases:
+    - duplicate
+
+- name: "status: help wanted"
+  color: bfe5bf
+  aliases:
+    - "help wanted"
+
+- name: "status: invalid"
+  color: cccccc
+  aliases:
+    - invalid
+
+- name: "status: good starter issue"
+  color: bfe5bf
+  aliases:
+    - "beginner-friendly"
+    - beginner
+    - "good-starter-issue"
+    - "starter-issue"
+
+- name: "status: wontfix"
+  color: cccccc
+  aliases:
+    - wontfix
+    - "wont-fix"
+
+- name: "status: blocked"
+  color: "990000"
+  aliases:
+    - blocked
+
+# Priorities
+- name: "priority: low"
+  color: 009800
+
+- name: "priority: medium"
+  color: fbca04
+
+- name: "priority: high"
+  color: eb6420
+
+- name: "priority: critical"
+  color: e11d21
+
+# Points
+- name: "point: 0"
+  color: "fff7cc"
+  aliases:
+    - "0"
+
+- name: "point: 1"
+  color: "ffef99"
+  aliases:
+    - "1"
+
+- name: "point: 2"
+  color: "ffe766"
+  aliases:
+    - "2"
+
+- name: "point: 3"
+  color: "ffdf32"
+  aliases:
+    - "3"
+
+- name: "point: 5"
+  color: "ffd700"
+  aliases:
+    - "5"
+
+- name: "point: 8"
+  color: "e5c100"
+  aliases:
+    - "8"
+
+- name: "point: 13"
+  color: "b29600"
+  aliases:
+    - "13"
+
+- name: "point: 21"
+  color: "7f6b00"
+  aliases:
+    - "21"

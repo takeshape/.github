@@ -1,0 +1,22 @@
+name: Label Sync
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  push:
+    branches:
+      - trunk
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: ./sync-labels.sh
