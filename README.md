@@ -1,0 +1,3 @@
+# takeshape/.github
+
+Shared files...
