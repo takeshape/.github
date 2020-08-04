@@ -1,3 +1,4 @@
+# https://github.com/marketplace/actions/create-issue-branch#configuration
 mode: chatops
-branchName: full
+branchName: "issue-${issue.number}-${issue.title,}"
 autoCloseIssue: true
