@@ -4,7 +4,7 @@
   aliases:
     - bug
 
-- name: "type: documentation ✏️ "
+- name: "type: documentation ✏️"
   color: 207de5
   aliases:
     - documentation
