@@ -1,15 +1,15 @@
 # Types
-- name: "type: bug"
+- name: "type: bug 🐛"
   color: "e11d21"
   aliases:
     - bug
 
-- name: "type: documentation"
+- name: "type: documentation ✏️ "
   color: 207de5
   aliases:
     - documentation
 
-- name: "type: feature"
+- name: "type: feature 🔨"
   color: "009800"
   aliases:
     - enhancement
@@ -33,7 +33,7 @@
   aliases:
     - discussion
 
-- name: "type: design"
+- name: "type: design 📐"
   color: eb6420
   aliases:
     - design
