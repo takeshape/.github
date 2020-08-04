@@ -12,5 +12,5 @@ if [ -z "${access_token}" ]; then
 fi
 
 while IFS= read -r repo; do
-  npx github-label-sync --allow-added-labels --labels ${labels} --access-token ${access_token} ${repo}
+  github-label-sync --allow-added-labels --labels ${labels} --access-token ${access_token} ${repo}
 done < "${repos}"

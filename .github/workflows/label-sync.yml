@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: 14.x
 
+      - run: |
+          npm install github-label-sync -g
+
       - env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: ./labels/sync.sh
