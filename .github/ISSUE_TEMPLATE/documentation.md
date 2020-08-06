@@ -1,5 +1,5 @@
 ---
-name: "Documentation ✏️"
+name: "Documentation change ✏️"
 about: "Improvements or additions to documentation"
 title: "[CHORE]"
 labels: "type: documentation ✏️"
