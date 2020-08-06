@@ -13,12 +13,12 @@
 
 - name: "type: chore 🧺"
   color: "fbca04"
-  description: "Clean up, refactors, general maintenance"  
+  description: "Clean up, refactors, general maintenance"
 
 - name: "type: question ❓"
   color: "cc317c"
   description: "Further information is requested"
-  
+
 - name: "type: discussion 📣"
   color: "cc317c"
 
@@ -47,9 +47,9 @@
 
 - name: "status: blocked ✋"
   color: "990000"
-  
+
 - name: "status: blocking ✋"
-  color: "990000"  
+  color: "990000"
 
 # Priorities
 - name: "priority: low"
@@ -71,31 +71,31 @@
 
 - name: "point: 1"
   color: "ffef99"
-  description: "S — Issue is well-understood, minimal complexity, likely a quick change."  
+  description: "S — Issue is well-understood, minimal complexity, likely a quick change"
 
 - name: "point: 2"
   color: "ffe766"
-  description: "M — Issue is well-understood, a small amount of additional research is needed or the fix will require more time or effort."    
+  description: "M — A small amount of research is needed and the change will require more time or effort"
 
 - name: "point: 3"
   color: "ffdf32"
-  description: "L — Issue is well-understood but additional research is needed and a fix will require some structural changes."          
+  description: "L — Substantial additional research is needed and the structural change necessary"
 
 - name: "point: 5"
   color: "ffd700"
-  description: "XL — Issue is partially understood, but requires substantial additional research and a fix is likely to involve major changes to the application."        
+  description: "XL — Partially understood, requires additional research and major changes necessary"
 
 - name: "point: 8"
   color: "e5c100"
-  description: "XXL — Issue is poorly understood, and requires substantial research before a fix can even be assessed for complexity. This should probably be a SPIKE."          
+  description: "XXL — Poorly understood, requires substantial research before complexity can be assessed"
 
 - name: "point: 13"
   color: "b29600"
-  description: "XXXL — Galaxy brain. Don't."            
+  description: "XXXL — Galaxy brain. Don't."
 
 - name: "point: 21"
   color: "7f6b00"
-  description: "Stop!"              
+  description: "XXXXL — Stop!"
 
 # Packages
 - name: "package: api"
