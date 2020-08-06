@@ -212,3 +212,10 @@
   color: "ff00db"
   aliases:
     - "package-samples"
+
+# Epics
+- name: "epic: gatsby plugin"
+  color: "97fcba"
+
+- name: "epic: bandwidth billing"
+  color: "97fcba"
