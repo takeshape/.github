@@ -1,8 +1,8 @@
 ---
-name: General issue 🧺
-about: Everything else...
-title: "[GENERAL]"
-labels: ""
+name: Chore 🧺
+about: "Clean up, refactors, general maintenance"
+title: "[CHORE]"
+labels: "type: chore 🧺"
 assignees: ""
 ---
 
