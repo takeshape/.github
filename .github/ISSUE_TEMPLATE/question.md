@@ -1,5 +1,5 @@
 ---
-name: "Ask a Question"
+name: "Ask a question❓"
 about: "Further information is requested"
 title: "[QUESTION]"
 labels: "type: question ❓"
