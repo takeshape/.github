@@ -12,14 +12,10 @@ jobs:
         if: ${{ github.event.action == 'opened' }}
         uses: technote-space/assign-author@v1
 
-  pig:
+  add_an_issue_reference:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Pull requests and Issues Glue (PIG)
-        uses: muachilin/Pig@0.0.8
+      - uses: kentaro-m/add-an-issue-reference-action@v2.0.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          in-progress-label-word: "handling"
-          done-label-color: "ffff00"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-prefix: issue-
