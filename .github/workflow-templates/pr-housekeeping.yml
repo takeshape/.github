@@ -1,0 +1,25 @@
+name: PR Housekeeping
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened, edited, closed]
+
+jobs:
+  assign_author:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign author to PR
+        if: ${{ github.event.action == 'opened' }}
+        uses: technote-space/assign-author@v1
+
+  pig:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Pull requests and Issues Glue (PIG)
+        uses: muachilin/Pig@0.0.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          in-progress-label-word: "handling"
+          done-label-color: "ffff00"
