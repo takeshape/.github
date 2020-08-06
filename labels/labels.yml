@@ -2,85 +2,54 @@
 - name: "type: bug 🐛"
   color: "e11d21"
   description: "Something isn't working"
-  aliases:
-    - bug
 
 - name: "type: documentation ✏️"
   color: 207de5
   description: "Improvements or additions to documentation"
-  aliases:
-    - documentation
 
 - name: "type: feature 🔨"
   color: "009800"
   description: "New feature or request"
-  aliases:
-    - enhancement
-    - feature
 
-- name: "type: maintenance"
+- name: "type: chore 🚮"
   color: "fbca04"
-  aliases:
-    - maintenance
-    - refactor
-    - testing
-    - test
+  description: "Clean up, refactors, "  
 
-- name: "type: question"
+- name: "type: question ❓"
   color: "cc317c"
   description: "Further information is requested"
-  aliases:
-    - question
-
-- name: "type: discussion"
+  
+- name: "type: discussion 📣"
   color: "cc317c"
-  aliases:
-    - discussion
 
 - name: "type: design 📐"
   color: eb6420
-  aliases:
-    - design
 
 # Statuses
 - name: "status: duplicate"
   color: cccccc
   description: "This issue or pull request already exists"
-  aliases:
-    - duplicate
 
 - name: "status: help wanted"
   color: bfe5bf
   description: "Extra attention is needed"
-  aliases:
-    - "help wanted"
 
 - name: "status: invalid"
   color: cccccc
   description: "This doesn't seem right"
-  aliases:
-    - invalid
 
 - name: "status: good starter issue"
   color: bfe5bf
-  aliases:
-    - "beginner-friendly"
-    - beginner
-    - "good-first-issue"
-    - "good-starter-issue"
-    - "starter-issue"
 
-- name: "status: wontfix"
+- name: "status: wontfix ⛔️"
   color: cccccc
   description: "This will not be worked on"
-  aliases:
-    - wontfix
-    - "wont-fix"
 
-- name: "status: blocked"
+- name: "status: blocked ✋"
   color: "990000"
-  aliases:
-    - blocked
+  
+- name: "status: blocking ✋"
+  color: "990000"  
 
 # Priorities
 - name: "priority: low"
@@ -99,119 +68,71 @@
 - name: "point: 0"
   color: "fff7cc"
   description: "XS — No work, just a record."
-  aliases:
-    - "0"
-    - "xs"
 
 - name: "point: 1"
   color: "ffef99"
   description: "S — Issue is well-understood, minimal complexity, likely a quick change."  
-  aliases:
-    - "1"
-    - "s"    
 
 - name: "point: 2"
   color: "ffe766"
   description: "M — Issue is well-understood, a small amount of additional research is needed or the fix will require more time or effort."    
-  aliases:
-    - "2"
-    - "m"        
 
 - name: "point: 3"
   color: "ffdf32"
-  description: "L — Issue is well-understood but additional research is needed and a fix will require some structural changes."      
-  aliases:
-    - "3"
-    - "l"    
+  description: "L — Issue is well-understood but additional research is needed and a fix will require some structural changes."          
 
 - name: "point: 5"
   color: "ffd700"
   description: "XL — Issue is partially understood, but requires substantial additional research and a fix is likely to involve major changes to the application."        
-  aliases:
-    - "5"
-    - "xl"    
 
 - name: "point: 8"
   color: "e5c100"
   description: "XXL — Issue is poorly understood, and requires substantial research before a fix can even be assessed for complexity. This should probably be a SPIKE."          
-  aliases:
-    - "8"
-    - "xxl"    
 
 - name: "point: 13"
   color: "b29600"
   description: "XXXL — Galaxy brain. Don't."            
-  aliases:
-    - "13"
-    - "xxxl"    
 
 - name: "point: 21"
   color: "7f6b00"
   description: "🤯"              
-  aliases:
-    - "21"
-    - "boom"    
 
 # Packages
 - name: "package: api"
   color: "ff00db"
-  aliases:
-    - "package-api"
 
 - name: "package: client"
   color: "ff00db"
-  aliases:
-    - "package-client"
 
 - name: "package: cli"
   color: "ff00db"
-  aliases:
-    - "package-cli"
 
 - name: "package: actions"
   color: "ff00db"
-  aliases:
-    - "package-actions"
 
 - name: "package: graphql"
   color: "ff00db"
-  aliases:
-    - "package-graphql"
 
 - name: "package: routing"
   color: "ff00db"
-  aliases:
-    - "package-routing"
 
 - name: "package: ssg"
   color: "ff00db"
-  aliases:
-    - "package-ssg"
 
 - name: "package: schema"
   color: "ff00db"
-  aliases:
-    - "package-schema"
 
 - name: "package: infra"
   color: "ff00db"
-  aliases:
-    - "package-infra"
 
 - name: "package: util"
   color: "ff00db"
-  aliases:
-    - "package-util"
 
 - name: "package: gatsby"
   color: "ff00db"
-  aliases:
-    - "package-gatsby"
 
 - name: "package: samples"
   color: "ff00db"
-  aliases:
-    - "package-samples"
 
 # Epics
 - name: "epic: gatsby plugin"
