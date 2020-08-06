@@ -1,5 +1,5 @@
 ---
-name: Chore 🧺
+name: Chore request 🧺
 about: "Clean up, refactors, general maintenance"
 title: "[CHORE]"
 labels: "type: chore 🧺"
@@ -7,7 +7,7 @@ assignees: ""
 ---
 
 **Description**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+What needs to get done?
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
