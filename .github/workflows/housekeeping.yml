@@ -1,0 +1,37 @@
+name: Housekeeping
+
+on:
+  pull_request:
+    types: [opened]
+  issues:
+    types: [opened]
+
+jobs:
+  assign-author:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - name: Assign author to PR
+        uses: technote-space/assign-author@v1
+
+  issue-link:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - uses: tkt-actions/add-issue-links@v1.4.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-prefix: issue-
+          position: top
+          resolve: true
+          link-style: comment
+
+  add-new-issue-to-column:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issue' && github.event.action == 'opened'
+    steps:
+      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+        with:
+          action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          project-url: https://github.com/orgs/takeshape/projects/2
+          column-name: Backlog
