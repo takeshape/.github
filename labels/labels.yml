@@ -13,7 +13,7 @@
 
 - name: "type: chore 🧺"
   color: "fbca04"
-  description: "Clean up, refactors, "  
+  description: "Clean up, refactors, general maintenance"  
 
 - name: "type: question ❓"
   color: "cc317c"
