@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: tkt-actions/add-issue-links@v1.4.0
         with:
-          repo-token: ${{ secrets.ORG_PROJECT_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           branch-prefix: issue-
           position: top
           resolve: true
-          link-style: comment
+          link-style: body
 
   add-new-issue-to-column:
     runs-on: ubuntu-latest
