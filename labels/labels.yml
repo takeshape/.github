@@ -98,43 +98,59 @@
 # Points
 - name: "point: 0"
   color: "fff7cc"
+  description: "XS — No work, just a record."
   aliases:
     - "0"
+    - "xs"
 
 - name: "point: 1"
   color: "ffef99"
+  description: "S — Issue is well-understood, minimal complexity, likely a quick change."  
   aliases:
     - "1"
+    - "s"    
 
 - name: "point: 2"
   color: "ffe766"
+  description: "M — Issue is well-understood, a small amount of additional research is needed or the fix will require more time or effort."    
   aliases:
     - "2"
+    - "m"        
 
 - name: "point: 3"
   color: "ffdf32"
+  description: "L — Issue is well-understood but additional research is needed and a fix will require some structural changes."      
   aliases:
     - "3"
+    - "l"    
 
 - name: "point: 5"
   color: "ffd700"
+  description: "XL — Issue is partially understood, but requires substantial additional research and a fix is likely to involve major changes to the application."        
   aliases:
     - "5"
+    - "xl"    
 
 - name: "point: 8"
   color: "e5c100"
+  description: "XXL — Issue is poorly understood, and requires substantial research before a fix can even be assessed for complexity. This should probably be a SPIKE."          
   aliases:
     - "8"
+    - "xxl"    
 
 - name: "point: 13"
   color: "b29600"
+  description: "XXXL — Galaxy brain. Don't."            
   aliases:
     - "13"
+    - "xxxl"    
 
 - name: "point: 21"
   color: "7f6b00"
+  description: "🤯"              
   aliases:
     - "21"
+    - "boom"    
 
 # Packages
 - name: "package: api"
