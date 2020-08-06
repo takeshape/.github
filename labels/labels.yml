@@ -95,7 +95,7 @@
 
 - name: "point: 21"
   color: "7f6b00"
-  description: "🤯"              
+  description: "Stop!"              
 
 # Packages
 - name: "package: api"
