@@ -4,7 +4,10 @@ on:
   pull_request:
     types: [opened]
   issues:
-    types: [opened]
+    types: [opened, assigned]
+
+env:
+  DEFAULT_BRANCH: trunk
 
 jobs:
   assign-author:
