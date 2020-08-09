@@ -35,3 +35,11 @@ jobs:
           action-token: ${{ secrets.ORG_PROJECT_TOKEN }}
           project-url: https://github.com/orgs/takeshape/projects/2
           column-name: Backlog
+
+  create-pr-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: takeshape/github-action-create-pr-comment@trunk
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
