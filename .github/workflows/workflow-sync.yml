@@ -13,8 +13,8 @@ env:
     takeshape/takeshape-gatsby
     takeshape/takeshape-email
   WORKFLOW_FILES: |
-    ./.github/create-pr-comment.yml=./.github/create-pr-comment.yml
-    ./.github/workflows/housekeeping.yml=./.github/workflows/housekeeping.yml
+    ./.github/create-pr-comment.yml=../create-pr-comment.yml
+    ./.github/workflows/housekeeping.yml
     
 jobs:
   github-workflow-sync:
