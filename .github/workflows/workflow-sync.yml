@@ -20,6 +20,7 @@ env:
     takeshape/takeshape-samples
     takeshape/takeshape-skyword
     takeshape/takeshape.io
+    takeshape/vm-nunjucks
   WORKFLOW_FILES: |
     ./.github/create-pr-comment.yml=../create-pr-comment.yml
     ./.github/workflows/housekeeping.yml
