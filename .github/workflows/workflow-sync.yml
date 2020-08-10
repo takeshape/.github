@@ -3,6 +3,7 @@ name: Workflow Sync
 on:
   push:
     paths: 
+      - ./.github/workflows/workflow-sync.yml
       - ./.github/workflows/housekeeping.yml
       - ./.github/create-pr-comment.yml
     branches:
