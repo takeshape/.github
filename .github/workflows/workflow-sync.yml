@@ -1,0 +1,30 @@
+name: Workflow Sync
+
+on:
+  push:
+    branches:
+      - trunk
+      
+env:
+  DRY_RUN: false
+  REPOSITORIES: |
+    takeshape/shape-form
+    takeshape/takeshape
+    takeshape/takeshape-gatsby
+    takeshape/twithub
+  WORKFLOW_FILES: |
+    ./.github/create-pr-comment.yml
+    ./.github/workflows/housekeeping.yml
+    
+jobs:
+  github-workflow-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Workflow Sync
+        uses: varunsridharan/action-github-workflow-sync@master
+        with:
+          DRY_RUN: ${{ env.DRY_RUN }}
+          REPOSITORIES: ${{ env.REPOSITORIES }}
+          WORKFLOW_FILES: ${{ env.WORKFLOW_FILES }}
+          GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
