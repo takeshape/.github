@@ -2,6 +2,9 @@ name: Workflow Sync
 
 on:
   push:
+    paths: 
+      - ./.github/workflows/housekeeping.yml
+      - ./.github/create-pr-comment.yml
     branches:
       - trunk
       
@@ -10,8 +13,13 @@ env:
   REPOSITORIES: |
     takeshape/shape-form
     takeshape/takeshape
-    takeshape/takeshape-gatsby
     takeshape/takeshape-email
+    takeshape/takeshape-gatsby
+    takeshape/takeshape-routing
+    takeshape/takeshape-samples
+    takeshape/takeshape-skyword
+    takeshape/takeshape.io
+    takeshape/vm-nunjucks
   WORKFLOW_FILES: |
     ./.github/create-pr-comment.yml=../create-pr-comment.yml
     ./.github/workflows/housekeeping.yml
