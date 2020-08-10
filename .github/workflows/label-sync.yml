@@ -23,5 +23,5 @@ jobs:
           npm install github-label-sync -g
 
       - env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
         run: ./labels/sync.sh
