@@ -11,7 +11,7 @@ env:
     takeshape/shape-form
     takeshape/takeshape
     takeshape/takeshape-gatsby
-    takeshape/twithub
+    takeshape/takeshape-email
   WORKFLOW_FILES: |
     ./.github/create-pr-comment.yml=./.github/create-pr-comment.yml
     ./.github/workflows/housekeeping.yml=./.github/workflows/housekeeping.yml
