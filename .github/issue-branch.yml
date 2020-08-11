@@ -1,5 +1,5 @@
 # https://github.com/robvanderleek/create-issue-branch#option-2-configure-github-action
-mode: auto
+mode: chatops
 silent: false
 branchName: "issue-${issue.number}/${issue.title,}"
 # autoCloseIssue: true
