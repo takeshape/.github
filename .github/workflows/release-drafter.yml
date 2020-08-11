@@ -6,9 +6,15 @@ on:
       - trunk
 
 jobs:
-  release-drafter:
+#   release-drafter:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: release-drafter/release-drafter@v5
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  test:
     runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'type: bug 🐛')
     steps:
-      - uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo "DOING IT!"
