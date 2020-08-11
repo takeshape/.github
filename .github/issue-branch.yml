@@ -2,20 +2,20 @@
 mode: auto
 silent: false
 branchName: "issue-${issue.number}/${issue.title,}"
-autoCloseIssue: true
+# autoCloseIssue: true
 gitSafeReplacementChar: "-"
-branches:
-  - label: |
-      "type: feature 🔨"
-    prefix: feat/
-  - label: |
-      "type: bug 🐛"
-    prefix: fix/
-  - label: |
-      "type: chore 🧺"
-    prefix: chore/
-  - label: |
-      "type: documentation ✏️"
-    prefix: docs/
-  - label: "*"
-    skip: true
+# branches:
+#   - label: |
+#       "type: feature 🔨"
+#     prefix: feat/
+#   - label: |
+#       "type: bug 🐛"
+#     prefix: fix/
+#   - label: |
+#       "type: chore 🧺"
+#     prefix: chore/
+#   - label: |
+#       "type: documentation ✏️"
+#     prefix: docs/
+#   - label: "*"
+#     skip: true
