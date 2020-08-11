@@ -14,7 +14,8 @@ jobs:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   test:
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'type: bug 🐛')
+    if: |
+      github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, "type: bug 🐛")
     steps:
       - run: |
           echo "DOING IT!"
