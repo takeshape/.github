@@ -15,7 +15,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, "type: bug 🐛")
+      github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'type: bug 🐛')
     steps:
       - run: |
           echo "DOING IT!"
