@@ -5,14 +5,18 @@ template: |
 version-resolver:
   major:
     labels:
-      - "major"
       - "type: breaking"
   minor:
     labels:
-      - "minor"
-      - "type: feature"
+      - "type: feature 🔨"
   patch:
     labels:
-      - "patch"
-      - "type: bug"
+      - "type: bug 🐛"
   default: patch
+categories:
+  - title: '🚀 Features'
+    labels: 
+      - 'type: feature 🔨'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'type: bug 🐛'
