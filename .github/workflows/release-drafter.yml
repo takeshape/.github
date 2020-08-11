@@ -1,9 +1,10 @@
 name: Release Drafter
 
 on:
-  push:
-    branches:
-      - trunk
+  issues: [assigned] 
+#   push:
+#     branches:
+#       - trunk
 
 jobs:
 #   release-drafter:
@@ -15,7 +16,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'type: bug 🐛')
+      github.event_name == 'issues' && github.event.action == 'assigned' && contains(github.event.issue.labels.*.name, 'type: bug 🐛')
     steps:
       - run: |
           echo "DOING IT!"
