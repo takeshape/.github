@@ -2,13 +2,14 @@ name: Workflow Sync
 
 on:
   push:
-    paths: 
+    paths:
       - .github/workflows/workflow-sync.yml
       - .github/workflows/housekeeping.yml
       - .github/create-pr-comment.yml
+      - .github/pr-labeler.yml
     branches:
       - trunk
-      
+
 env:
   DRY_RUN: false
   REPOSITORIES: |
@@ -23,8 +24,9 @@ env:
     takeshape/vm-nunjucks
   WORKFLOW_FILES: |
     ./.github/create-pr-comment.yml=../create-pr-comment.yml
+    ./.github/pr-labeler.yml=../pr-labeler.yml
     ./.github/workflows/housekeeping.yml
-    
+
 jobs:
   github-workflow-sync:
     runs-on: ubuntu-latest
