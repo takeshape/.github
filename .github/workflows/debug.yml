@@ -43,7 +43,7 @@ jobs:
           fi
           echo "::set-output name=template-name::$template"
 
-      - uses: mshick/add-pr-comment@v1
+      - uses: mshick/add-pr-comment@master
         if: steps.create-issue-branch.outputs.branchName != ''
         env:
           PULL_REQUEST_URL: ${{ format('https://github.com/{0}/compare/{1}...{2}?quick_pull=1&template={3}', github.repository, 'trunk', steps.create-issue-branch.outputs.branchName, steps.template.outputs.template-name) }}
