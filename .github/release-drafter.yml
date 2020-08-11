@@ -1,0 +1,18 @@
+template: |
+  ## What’s Changed
+
+  $CHANGES
+version-resolver:
+  major:
+    labels:
+      - "major"
+      - "type: breaking"
+  minor:
+    labels:
+      - "minor"
+      - "type: feature"
+  patch:
+    labels:
+      - "patch"
+      - "type: bug"
+  default: patch
