@@ -1,22 +1,45 @@
+name-template: "v$RESOLVED_VERSION"
+
+tag-template: "release-v$RESOLVED_VERSION"
+
 template: |
   ## What’s Changed
 
   $CHANGES
+
 version-resolver:
   major:
     labels:
       - "type: breaking"
+
   minor:
     labels:
       - "type: feature 🔨"
+
   patch:
     labels:
       - "type: bug 🐛"
+      - "type: chore 🧺"
+
   default: patch
+
 categories:
-  - title: '🚀 Features'
-    labels: 
-      - 'type: feature 🔨'
-  - title: '🐛 Bug Fixes'
+  - title: "Breaking"
     labels:
-      - 'type: bug 🐛'
+      - "type: breaking"
+
+  - title: "New"
+    labels:
+      - "type: feature 🔨"
+
+  - title: Bug Fixes
+    labels:
+      - "type: bug 🐛"
+
+  - title: Maintenance
+    labels:
+      - "type: chore 🧺"
+
+  - title: Documentation
+    labels:
+      - "type: documentation ✏️"
