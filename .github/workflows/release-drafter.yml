@@ -17,10 +17,12 @@ jobs:
   create-issue-branch:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        
       - uses: robvanderleek/create-issue-branch@master
         id: create-issue-branch
         env:
-          GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.create-issue-branch.outputs.branchName != ''
         id: template
