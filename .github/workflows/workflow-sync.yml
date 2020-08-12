@@ -5,7 +5,8 @@ on:
     paths:
       - .github/workflows/workflow-sync.yml
       - .github/workflows/housekeeping.yml
-      - .github/create-pr-comment.yml
+      - .github/issue-branch.yml
+      - .github/release-drafter.yml
       - .github/pr-labeler.yml
     branches:
       - trunk
@@ -23,7 +24,8 @@ env:
     takeshape/takeshape.io
     takeshape/vm-nunjucks
   WORKFLOW_FILES: |
-    ./.github/create-pr-comment.yml=../create-pr-comment.yml
+    ./.github/issue-branch.yml=../issue-branch.yml
+    ./.github/release-drafter.yml=../release-drafter.yml
     ./.github/pr-labeler.yml=../pr-labeler.yml
     ./.github/workflows/housekeeping.yml
 
