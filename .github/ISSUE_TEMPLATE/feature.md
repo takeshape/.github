@@ -6,19 +6,22 @@ labels: "type: feature 🔨"
 assignees: ""
 ---
 
-**What problem are you trying to solve?**
+## What problem are you trying to solve?
+
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**Describe the solution you'd like**
+## Describe the solution you'd like
+
 A clear and concise description of what you want to happen.
 
-**Additional context**
+## Additional context
+
 Add any other context or screenshots about the feature request here.
 
-**Tasks**
+## Tasks
 
 - [ ]
 
-**Related Issues**
+## Related Issues
 
 - Link to an issue e.g., `#1`

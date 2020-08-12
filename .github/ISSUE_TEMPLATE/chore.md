@@ -6,16 +6,18 @@ labels: "type: chore 🧺"
 assignees: ""
 ---
 
-**Description**
+## Description
+
 What needs to get done?
 
-**Additional context**
+## Additional context
+
 Add any other context or screenshots about the feature request here.
 
-**Tasks**
+## Tasks
 
 - [ ]
 
-**Related Issues**
+## Related Issues
 
 - Link to an issue e.g., `#1`

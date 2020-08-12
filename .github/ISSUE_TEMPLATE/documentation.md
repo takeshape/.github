@@ -6,13 +6,14 @@ labels: "type: documentation ✏️"
 assignees: ""
 ---
 
-**Description**
+## Description
+
 What docs need updating or changing (and why)?
 
-**Tasks**
+## Tasks
 
 - [ ]
 
-**Related Issues**
+## Related Issues
 
 - Link to an issue e.g., `#1`
