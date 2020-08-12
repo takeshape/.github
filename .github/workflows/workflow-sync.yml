@@ -4,7 +4,9 @@ on:
   push:
     paths:
       - .github/workflows/workflow-sync.yml
-      - .github/workflows/housekeeping.yml
+      - .github/workflows/_pm_issues.yml
+      - .github/workflows/_pm_pull-request.yml
+      - .github/workflows/_pm_push.yml
       - .github/issue-branch.yml
       - .github/release-drafter.yml
       - .github/pr-labeler.yml
@@ -27,7 +29,9 @@ env:
     ./.github/issue-branch.yml=../issue-branch.yml
     ./.github/release-drafter.yml=../release-drafter.yml
     ./.github/pr-labeler.yml=../pr-labeler.yml
-    ./.github/workflows/housekeeping.yml
+    ./.github/workflows/_pm_issues.yml
+    ./.github/workflows/_pm_pull-request.yml
+    ./.github/workflows/_pm_push.yml
 
 jobs:
   github-workflow-sync:
