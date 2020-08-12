@@ -97,43 +97,6 @@
   color: "7f6b00"
   description: "XXXXL — Stop!"
 
-# Packages
-- name: "package: api"
-  color: "ff00db"
-
-- name: "package: client"
-  color: "ff00db"
-
-- name: "package: cli"
-  color: "ff00db"
-
-- name: "package: actions"
-  color: "ff00db"
-
-- name: "package: graphql"
-  color: "ff00db"
-
-- name: "package: routing"
-  color: "ff00db"
-
-- name: "package: ssg"
-  color: "ff00db"
-
-- name: "package: schema"
-  color: "ff00db"
-
-- name: "package: infra"
-  color: "ff00db"
-
-- name: "package: util"
-  color: "ff00db"
-
-- name: "package: gatsby"
-  color: "ff00db"
-
-- name: "package: samples"
-  color: "ff00db"
-
 # Epics
 - name: "epic: gatsby plugin"
   color: "97fcba"
