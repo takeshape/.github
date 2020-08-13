@@ -1,29 +1,29 @@
 # Types
 - name: "type: bug 🐛"
-  color: e11d21
+  color: ECA8A8
   description: "Something isn't working"
 
 - name: "type: documentation ✏️"
-  color: 207de5
+  color: A8E8EC
   description: "Improvements or additions to documentation"
 
 - name: "type: feature 🔨"
-  color: 009800
+  color: B1ECA8
   description: "New feature or request"
 
 - name: "type: chore 🧺"
-  color: fbca04
+  color: F7FC97
   description: "Clean up, refactors, general maintenance"
 
 - name: "type: question ❓"
-  color: cc317c
+  color: ECA8EC
   description: "Further information is requested"
 
 - name: "type: design 📐"
-  color: eb6420
+  color: ECB5A8
 
 - name: "type: breaking"
-  color: d93f0b
+  color: ECA8A8
 
 # Statuses
 - name: "status: duplicate"
@@ -46,23 +46,23 @@
   description: "This will not be worked on"
 
 - name: "status: blocked ✋"
-  color: "990000"
+  color: "EC7A7C"
 
 - name: "status: blocking ✋"
-  color: "990000"
+  color: "EC7A7C"
 
 # Priorities
 - name: "priority: low"
-  color: 009800
+  color: ADECA8
 
 - name: "priority: medium"
-  color: fbca04
+  color: ECEAA8
 
 - name: "priority: high"
-  color: eb6420
+  color: ECA8A8
 
 - name: "priority: critical"
-  color: e11d21
+  color: EC8585
 
 # Points
 - name: "point: 0"
