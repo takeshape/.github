@@ -14,8 +14,7 @@ on:
       - trunk
 
 env:
-  DRY_RUN: false
-  REPOSITORIES: |
+  TARGET_REPOS: |
     takeshape/shape-form
     takeshape/takeshape
     takeshape/takeshape-email
@@ -25,23 +24,26 @@ env:
     takeshape/takeshape-skyword
     takeshape/takeshape.io
     takeshape/vm-nunjucks
-  WORKFLOW_FILES: |
-    ./.github/issue-branch.yml=../issue-branch.yml
-    ./.github/auto.json=../auto.json
-    ./.github/pr-labeler.yml=../pr-labeler.yml
-    ./.github/workflows/_pm_issues.yml
-    ./.github/workflows/_pm_pull-request.yml
-    ./.github/workflows/_pm_release.yml
+  FILE_PATTERNS: |
+    ^.github/workflows/_pm*
+    ^.github/issue-branch.yml
+    ^.github/auto.json
+    ^.github/pr-labeler.yml
+  COMMIT_MESSAGE: |
+    .github workflow file sync [skip ci]
 
 jobs:
-  github-workflow-sync:
+  file-sync:
+    name: file sync
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Workflow Sync
-        uses: varunsridharan/action-github-workflow-sync@master
+      - name: checkout repo
+        uses: actions/checkout@v2
+
+      - name: syncing files
+        uses: adrianjost/files-sync-action@v1.0.1
         with:
-          DRY_RUN: ${{ env.DRY_RUN }}
-          REPOSITORIES: ${{ env.REPOSITORIES }}
-          WORKFLOW_FILES: ${{ env.WORKFLOW_FILES }}
+          FILE_PATTERNS: ${{ env.FILE_PATTERNS }}
+          TARGET_REPOS: ${{ env.TARGET_REPOS }}
           GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+          COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
