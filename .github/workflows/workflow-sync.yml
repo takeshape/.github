@@ -6,9 +6,9 @@ on:
       - .github/workflows/workflow-sync.yml
       - .github/workflows/_pm_issues.yml
       - .github/workflows/_pm_pull-request.yml
-      - .github/workflows/_pm_push.yml
+      - .github/workflows/_pm_release.yml
       - .github/issue-branch.yml
-      - .github/release-drafter.yml
+      - .github/auto.json
       - .github/pr-labeler.yml
     branches:
       - trunk
@@ -27,11 +27,11 @@ env:
     takeshape/vm-nunjucks
   WORKFLOW_FILES: |
     ./.github/issue-branch.yml=../issue-branch.yml
-    ./.github/release-drafter.yml=../release-drafter.yml
+    ./.github/auto.json=../auto.json
     ./.github/pr-labeler.yml=../pr-labeler.yml
     ./.github/workflows/_pm_issues.yml
     ./.github/workflows/_pm_pull-request.yml
-    ./.github/workflows/_pm_push.yml
+    ./.github/workflows/_pm_release.yml
 
 jobs:
   github-workflow-sync:
