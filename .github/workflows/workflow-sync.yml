@@ -6,6 +6,7 @@ on:
       - .github/workflows/workflow-sync.yml
       - .github/workflows/_pm*
       - .github/issue-branch.yml
+      - .github/release-drafter.yml
       - .github/auto.json
       - .github/pr-labeler.yml
       - .github/scripts/*
@@ -25,6 +26,7 @@ env:
     takeshape/vm-nunjucks
   FILE_PATTERNS: |
     ^.github/workflows/_pm*
+    ^.github/release-drafter.yml
     ^.github/issue-branch.yml
     ^.github/auto.json
     ^.github/pr-labeler.yml
