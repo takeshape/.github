@@ -4,12 +4,11 @@ on:
   push:
     paths:
       - .github/workflows/workflow-sync.yml
-      - .github/workflows/_pm_issues.yml
-      - .github/workflows/_pm_pull-request.yml
-      - .github/workflows/_pm_release.yml
+      - .github/workflows/_pm*
       - .github/issue-branch.yml
       - .github/auto.json
       - .github/pr-labeler.yml
+      - .github/scripts/*
     branches:
       - trunk
 
@@ -29,6 +28,7 @@ env:
     ^.github/issue-branch.yml
     ^.github/auto.json
     ^.github/pr-labeler.yml
+    ^.github/scripts/*
   COMMIT_MESSAGE: "Update file(s) from %SRC_REPO% [skip ci]"
 
 jobs:
