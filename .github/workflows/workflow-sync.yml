@@ -29,8 +29,7 @@ env:
     ^.github/issue-branch.yml
     ^.github/auto.json
     ^.github/pr-labeler.yml
-  COMMIT_MESSAGE: |
-    .github workflow file sync [skip ci]
+  COMMIT_MESSAGE: "Update file(s) from %SRC_REPO% [skip ci]"
 
 jobs:
   file-sync:
