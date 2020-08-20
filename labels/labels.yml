@@ -55,6 +55,18 @@
 - name: "status: blocking ✋"
   color: "EC7A7C"
 
+- name: "stage: backlog 📌"
+  color: "f6f4e6"
+
+- name: "stage: in progress 👷"
+  color: "f6f4e6"
+
+- name: "stage: waiting on review 🛎️"
+  color: "f6f4e6"
+
+- name: "stage: in review 🕵"
+  color: "f6f4e6"
+
 # Priorities
 - name: "priority: low"
   color: "ADECA8"
