@@ -55,6 +55,7 @@
 - name: "status: blocking ✋"
   color: "EC7A7C"
 
+# Stage
 - name: "stage: backlog 📌"
   color: "f6f4e6"
 
