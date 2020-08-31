@@ -1,10 +1,11 @@
-name: Workflow Sync
+name: Files Sync
 
 on:
   push:
     paths:
-      - .github/workflows/workflow-sync.yml
+      - .github/workflows/files-sync.yml
       - .github/workflows/_pm*
+      - .github/workflows/_release*
       - .github/issue-branch.yml
       - .github/release-drafter.yml
       - .github/auto.json
@@ -14,18 +15,29 @@ on:
       - trunk
 
 env:
-  TARGET_REPOS: |
+  TARGET_REPOS_PM: |
     takeshape/shape-form
     takeshape/takeshape
     takeshape/takeshape-email
-    takeshape/takeshape-gatsby
     takeshape/takeshape-routing
     takeshape/takeshape-samples
     takeshape/takeshape-skyword
     takeshape/takeshape.io
     takeshape/vm-nunjucks
-  FILE_PATTERNS: |
+  FILE_PATTERNS_PM: |
     ^.github/workflows/_pm*
+    ^.github/release-drafter.yml
+    ^.github/issue-branch.yml
+    ^.github/auto.json
+    ^.github/pr-labeler.yml
+    ^.github/scripts/*
+  # Moving toward bundles of functionality
+  TARGET_REPOS_RELEASE: |
+    takeshape/takeshape-gatsby
+  FILE_PATTERNS_RELEASE: |
+    ^.github/workflows/_pm_issues.yml
+    ^.github/workflows/_pm_pull-request.yml
+    ^.github/workflows/_release*
     ^.github/release-drafter.yml
     ^.github/issue-branch.yml
     ^.github/auto.json
@@ -41,10 +53,18 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
 
-      - name: syncing files
+      - name: Sync PM Files
         uses: adrianjost/files-sync-action@v1.1.0
         with:
-          FILE_PATTERNS: ${{ env.FILE_PATTERNS }}
-          TARGET_REPOS: ${{ env.TARGET_REPOS }}
+          FILE_PATTERNS: ${{ env.FILE_PATTERNS_PM }}
+          TARGET_REPOS: ${{ env.TARGET_REPOS_PM }}
+          GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+          COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
+
+      - name: Sync Release Files
+        uses: adrianjost/files-sync-action@v1.1.0
+        with:
+          FILE_PATTERNS: ${{ env.FILE_PATTERNS_RELEASE }}
+          TARGET_REPOS: ${{ env.TARGET_REPOS_RELEASE }}
           GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
           COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
