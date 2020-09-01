@@ -25,10 +25,6 @@
 - name: "type: breaking"
   color: "ECA8A8"
 
-- name: "type: epic ⛰️"
-  color: "C3AED6"
-  description: "A body of work that is broken down into specific issues"
-
 # Statuses
 - name: "status: released ✌️"
   color: "cccccc"
@@ -58,19 +54,6 @@
 
 - name: "status: blocking ✋"
   color: "EC7A7C"
-
-# Stage
-- name: "stage: backlog 📌"
-  color: "f6f4e6"
-
-- name: "stage: in progress 👷"
-  color: "f6f4e6"
-
-- name: "stage: waiting on review 🛎️"
-  color: "f6f4e6"
-
-- name: "stage: in review 🕵"
-  color: "f6f4e6"
 
 # Priorities
 - name: "priority: low"
