@@ -25,6 +25,10 @@
 - name: "type: breaking"
   color: "ECA8A8"
 
+- name: "type: epic ⛰️"
+  color: "C3AED6"
+  description: "A body of work that is broken down into specific issues"
+
 # Statuses
 - name: "status: released ✌️"
   color: "cccccc"
