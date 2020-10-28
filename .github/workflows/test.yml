@@ -7,23 +7,19 @@ on:
 jobs:
   clubhouse-link:
     name: clubhouse link
+    if: startsWith(github.head_ref, 'refs/heads/ch')
     runs-on: ubuntu-latest
     steps:
       - name: debug
-        env:
-          BRANCH: ${{ github.ref }}
         run: |
-          echo "branch: $BRANCH"
+          echo "branch: $GITHUB_REF"
           
       - name: extract id
         id: extract-id
-        env:
-          BRANCH: ${{ github.ref }}
         run: |
-          if \
-            [[ $BRANCH =~ ^refs/heads/ch[0-9] ]] \
+          if [[ $GITHUB_REF =~ ^refs/heads/ch[0-9] ]] \
           then \
-            id=$(echo $BRANCH | cut -d'/' -f 3); \
+            id=$(echo $GITHUB_REF | cut -d'/' -f 3); \
             echo "::set-output name=clubhouse-id::$id"; \
           fi
 
