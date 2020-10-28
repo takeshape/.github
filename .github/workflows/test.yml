@@ -1,0 +1,32 @@
+name: TEST
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  clubhouse-link:
+    name: clubhouse link
+    if: github.event.action == 'opened' && startsWith(github.ref, 'refs/heads/ch')
+    runs-on: ubuntu-latest
+    steps:
+      - name: extract id
+        id: extract-id
+        env:
+          BRANCH: ${{ github.ref }}
+        run: |
+          if \
+            [[ $BRANCH =~ ^refs/heads/ch[0-9] ]] \
+          then \
+            id=$(echo $BRANCH | cut -d'/' -f 3); \
+            echo "::set-output name=clubhouse-id::$id"; \
+          fi
+
+      - name: add pr link in comment
+        uses: mshick/add-pr-comment@master
+        with:
+          message: |
+            ## Related issue 
+            [${{ steps.extract-id.output.clubbouse-id }}](https://app.clubhouse.io/takeshape/story/)
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
