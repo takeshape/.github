@@ -7,9 +7,15 @@ on:
 jobs:
   clubhouse-link:
     name: clubhouse link
-    if: github.event.action == 'opened' && startsWith(github.ref, 'refs/heads/ch')
+    if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
+      - name: debug
+        env:
+          BRANCH: ${{ github.ref }}
+        run: |
+          echo "branch: $BRANCH"
+          
       - name: extract id
         id: extract-id
         env:
@@ -23,6 +29,7 @@ jobs:
           fi
 
       - name: add pr link in comment
+        if: steps.extract-id.output.clubbouse-id != ''
         uses: mshick/add-pr-comment@master
         with:
           message: |
