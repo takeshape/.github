@@ -7,7 +7,6 @@ on:
 jobs:
   clubhouse-link:
     name: clubhouse link
-    if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - name: debug
