@@ -55,19 +55,6 @@
 - name: "status: blocking ✋"
   color: "EC7A7C"
 
-# Stage
-- name: "stage: backlog 📌"
-  color: "f6f4e6"
-
-- name: "stage: in progress 👷"
-  color: "f6f4e6"
-
-- name: "stage: waiting on review 🛎️"
-  color: "f6f4e6"
-
-- name: "stage: in review 🕵"
-  color: "f6f4e6"
-
 # Priorities
 - name: "priority: low"
   color: "ADECA8"
@@ -118,10 +105,3 @@
 - name: "release: skip"
   color: "cfd3d7"
   description: "Explicitly skip triggering a bump in the next release"
-
-# Epics
-- name: "epic: gatsby plugin"
-  color: "97fcba"
-
-- name: "epic: bandwidth billing"
-  color: "97fcba"

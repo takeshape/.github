@@ -1,0 +1,41 @@
+name: TEST
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  clubhouse-link:
+    name: clubhouse link
+    if: startsWith(github.head_ref, 'ch')
+    runs-on: ubuntu-latest
+    steps:
+      - name: extract id
+        id: extract-id
+        run: |
+          if [[ $GITHUB_HEAD_REF =~ ^ch([0-9]+) ]]; \
+          then \
+            echo "::set-output name=clubhouse-id::${BASH_REMATCH[1]}"; \
+          fi
+
+      - name: get story name
+        id: get-story-name
+        env:
+          CLUBHOUSE_API_KEY: ${{ secrets.CLUBHOUSE_API_KEY }}
+        run: |
+          story_name=$(curl -X GET \
+            -H "Content-Type: application/json" \
+            -H "Clubhouse-Token: ${CLUBHOUSE_API_KEY}" \
+            -L "https://api.clubhouse.io/api/v3/stories/3799" | \
+            jq ".name")
+          echo "::set-output name=story-name::${story_name}";
+
+      - name: add pr link in comment
+        if: steps.extract-id.outputs.clubhouse-id != ''
+        uses: mshick/add-pr-comment@master
+        with:
+          message: |
+            ## Related issue
+            [${{ steps.get-story-name.outputs.story-name }}](https://app.clubhouse.io/takeshape/story/${{ steps.extract-id.outputs.clubhouse-id }})
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
