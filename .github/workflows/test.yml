@@ -8,6 +8,7 @@ jobs:
   clubhouse-link:
     name: clubhouse link
     runs-on: ubuntu-latest
+    if: startsWith($GITHUB_HEAD_REF, 'ch')
     steps:
       - name: debug
         run: |
@@ -16,9 +17,9 @@ jobs:
       - name: extract id
         id: extract-id
         run: |
-          if [[ $GITHUB_HEAD_REF =~ ^refs/heads/ch[0-9] ]] \
+          if [[ $GITHUB_HEAD_REF =~ ^ch[0-9] ]] \
           then \
-            id=$(echo $GITHUB_HEAD_REF | cut -d'/' -f 3); \
+            id=$(echo $GITHUB_HEAD_REF | cut -d'/' -f 1); \
             echo "::set-output name=clubhouse-id::$id"; \
           fi
 
