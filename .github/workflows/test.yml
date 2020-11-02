@@ -17,7 +17,7 @@ jobs:
       - name: extract id
         id: extract-id
         run: |
-          if [[ $GITHUB_HEAD_REF =~ ^ch[0-9] ]] \
+          if [[ $GITHUB_HEAD_REF =~ ^ch[0-9] ]]; \
           then \
             id=$(echo $GITHUB_HEAD_REF | cut -d'/' -f 1); \
             echo "::set-output name=clubhouse-id::$id"; \
