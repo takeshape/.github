@@ -7,7 +7,7 @@ on:
 jobs:
   clubhouse-link:
     name: clubhouse link
-    if: github.event.action == 'opened' && startsWith(github.head_ref, 'ch')
+    if: startsWith(github.head_ref, 'ch')
     runs-on: ubuntu-latest
     steps:
       - name: extract id
