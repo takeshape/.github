@@ -7,13 +7,9 @@ on:
 jobs:
   clubhouse-link:
     name: clubhouse link
+    if: github.event.action == 'opened' && startsWith(github.head_ref, 'ch')
     runs-on: ubuntu-latest
-    if: startsWith(github.head_ref, 'ch')
     steps:
-      - name: debug
-        run: |
-          echo "branch: $GITHUB_HEAD_REF"
-          
       - name: extract id
         id: extract-id
         run: |
@@ -22,12 +18,24 @@ jobs:
             echo "::set-output name=clubhouse-id::${BASH_REMATCH[1]}"; \
           fi
 
+      - name: get story name
+        id: get-story-name
+        env:
+          CLUBHOUSE_API_KEY: ${{ secrets.CLUBHOUSE_API_KEY }}
+        run: |
+          story_name=$(curl -X GET \
+            -H "Content-Type: application/json" \
+            -H "Clubhouse-Token: ${CLUBHOUSE_API_KEY}" \
+            -L "https://api.clubhouse.io/api/v3/stories/3799" | \
+            jq ".name")
+          echo "::set-output name=story-name::${story_name}";
+
       - name: add pr link in comment
         if: steps.extract-id.outputs.clubhouse-id != ''
         uses: mshick/add-pr-comment@master
         with:
           message: |
-            ## Related issue 
-            [${{ steps.extract-id.outputs.clubhouse-id }}](https://app.clubhouse.io/takeshape/story/)
+            ## Related issue
+            [${{ steps.get-story-name.outputs.story-name }}](https://app.clubhouse.io/takeshape/story/${{ steps.extract-id.outputs.clubhouse-id }})
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
