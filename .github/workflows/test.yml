@@ -8,7 +8,7 @@ jobs:
   clubhouse-link:
     name: clubhouse link
     runs-on: ubuntu-latest
-    if: startsWith($GITHUB_HEAD_REF, 'ch')
+    if: startsWith(github.head_ref, 'ch')
     steps:
       - name: debug
         run: |
