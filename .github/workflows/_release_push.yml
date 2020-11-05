@@ -36,7 +36,7 @@ jobs:
             ${{ runner.os }}-${{ matrix.node-version }}-pnpm
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v1.2.0
+        uses: pnpm/action-setup@v1.2.1
         with:
           version: 5.10.4
           run_install: |
@@ -82,7 +82,7 @@ jobs:
             ${{ runner.os }}-${{ matrix.node-version }}-pnpm
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v1.2.0
+        uses: pnpm/action-setup@v1.2.1
         with:
           version: 5.10.4
           run_install: |
