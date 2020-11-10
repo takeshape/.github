@@ -2,7 +2,7 @@ name: DEBUG
 
 on:
   pull_request:
-    types: [opened, synchronize, review_requested]
+    types: [opened, synchronize, review_requested, labeled, unlabeled]
 
 jobs:
   pr-label-check:
