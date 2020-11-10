@@ -26,6 +26,7 @@ env:
     takeshape/vm-nunjucks
   FILE_PATTERNS_PM: |
     ^.github/workflows/_pm*
+    ^.github/workflows/_release_pull-request-label-check.yml
     ^.github/release-drafter.yml
     ^.github/issue-branch.yml
     ^.github/auto.json

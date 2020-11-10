@@ -1,4 +1,4 @@
-name: Releases / Push
+name: Release / Push
 
 on:
   push:
