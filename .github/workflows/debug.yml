@@ -19,4 +19,4 @@ jobs:
       - name: check for release label
         if: github.event.pull_request.labels != ''
         run: |
-          echo "::error PR must be labeled"
+          echo "::error ::PR must be labeled"
