@@ -2,12 +2,12 @@ name: DEBUG
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, review_requested]
 
 jobs:
   pr-label-check:
     name: Release Label Present
-    if: github.event.action == 'synchronize'
+    if: github.event.action == 'synchronize' || github.event.action == 'review_requested'
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
