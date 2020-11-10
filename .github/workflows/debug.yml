@@ -1,0 +1,22 @@
+name: DEBUG
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  pr-label-check:
+    name: Release Label Present
+    if: github.event.action == 'synchronize'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          
+      - name: check for release label
+        if: github.event.pull_request.labels != ''
+        run: |
+          echo "::error PR must be labeled"
