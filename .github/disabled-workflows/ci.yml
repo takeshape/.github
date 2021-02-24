@@ -1,0 +1,216 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - "*.js"
+      - "*.json"
+      - "packages/**/*.js"
+      - "packages/**/*.jsx"
+      - "packages/**/*.ts"
+      - "packages/**/*.tsx"
+      - "packages/**/*.json"
+
+env:
+  NODE_VERSION: 14.x
+  AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  setup:
+    name: Setup Tests
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-20.04
+    outputs:
+      test-package-names: ${{ steps['set-test-package-names'].outputs['test-package-names'] }}
+    steps:
+      - name: Cancel redundant workflows
+        uses: technote-space/auto-cancel-redundant-workflow@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache pnpm store
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v1.2.1
+        with:
+          version: 5.13.5
+          run_install: |
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Build packages
+        run: |
+          pnpm build --recursive
+
+      - name: Set packages to test
+        id: set-test-package-names
+        run: |
+          package_names=$(pnpm recursive exec --filter "...{packages}[origin/master]" -- cat ./package.json | jq '.name') && \
+            echo "::set-output name=test-package-names::$(echo "${package_names[@]}" | jq -cMs)"
+
+      - name: Tar built packages
+        run: |
+          tar -cvf built-packages.tar packages/*/{build,es,lib}
+
+      - name: Upload built packages
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: built-packages
+          path: built-packages.tar
+
+      - name: Cancel workflow if there are no changes to test
+        if: ${{ steps['set-test-package-names'].outputs['test-package-names'] == '' }}
+        uses: actions/github-script@v2
+        id: check
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            console.log('Cancelling...')
+            const run_id = "${{ github.run_id }}"
+            await github.actions.cancelWorkflowRun({ owner, repo, run_id })
+            return 'stop'
+          result-encoding: string
+
+      - name: Waiting for cancellation
+        if: ${{ steps.check.outputs.result == 'stop' }}
+        run: |
+          sleep 60
+
+  test:
+    name: Run Tests (${{ matrix.package }})
+    if: github.event_name == 'pull_request'
+    needs: [setup]
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.setup.outputs['test-package-names']) }}
+    # strategy:
+    #   matrix:
+    #     package:
+    #       - '@takeshape/actions'
+    #       - '@takeshape/api'
+    #       - '@takeshape/client'
+    #       - '@takeshape/cli'
+    #       - '@takeshape/infra'
+    #       - '@takeshape/preview-cdn'
+    #       - '@takeshape/routing'
+    #       - '@takeshape/schema'
+    #       - '@takeshape/ssg'
+    #       - '@takeshape/staging-cdn'
+    #       - '@takeshape/util'
+    #       - '@takeshape/streams'
+    steps:
+      - name: Cancel redundant workflows
+        uses: technote-space/auto-cancel-redundant-workflow@v1
+
+      - name: Get env vars
+        id: env
+        run: |
+          echo "::set-output name=HOME::${HOME}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download built packages
+        uses: actions/download-artifact@v2
+        with:
+          name: built-packages
+
+      - name: Restore built packages
+        run: tar -xvf built-packages.tar
+
+      - name: Setup node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache pnpm store
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v1.2.1
+        with:
+          version: 5.13.5
+          run_install: |
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Get development .env
+        run: |
+          pnpm get-dev-env --recursive --filter ${{ matrix.package }}
+
+      - name: Typecheck package
+        run: |
+          pnpm typecheck --recursive --filter ${{ matrix.package }}
+
+      - name: ESLint package
+        if: ${{ always() }}
+        run: |
+          pnpm lint:code:ci --recursive --filter ${{ matrix.package }}
+
+      - name: Stylelint package
+        if: ${{ always() }}
+        run: |
+          pnpm lint:styles:ci --recursive --filter ${{ matrix.package }}
+
+      - name: Jest test package
+        if: ${{ always() && matrix.package != '@takeshape/api' }}
+        run: |
+          pnpm test:ci --recursive --filter ${{ matrix.package }}
+
+      # - name: Publish test report
+      #   if: always()
+      #   uses: mikepenz/action-junit-report@v1
+      #   with:
+      #     check_name: Test Report (${{ matrix.package }})
+      #     report_paths: ${{ steps.env.outputs.HOME }}/test-results/**/*-results.xml
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload test results
+        if: ${{ success() || failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: ~/test-results/*
+
+  report:
+    name: Publish Test Results
+    if: ${{ github.event_name == 'pull_request' && (success() || failure()) }}
+    needs: [test]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download test results
+        uses: actions/download-artifact@v2
+
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v1
+        with:
+          check_name: Test Report
+          report_paths: "**/*-results.xml"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
