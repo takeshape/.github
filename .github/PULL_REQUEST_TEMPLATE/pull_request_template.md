@@ -1,3 +1,4 @@
+> If you don't want to invoke CI, put `[skip ci]` in the commit message
 ### Screenshots
 
 ### Test Plan (Steps to test):
@@ -9,8 +10,9 @@
 ### Checklist:
 
 - [ ] Create a Test Plan
-- [ ] Changes Communicated <small>through commit messages or in body</small>
+- [ ] Changes Communicated [^1]
 - [ ] Docs Updated
-- [ ] Storybook Updated <small>client changes only</small>
+- [ ] Storybook Updated [^2]
 
-> If you don't want to invoke CI, put `[skip ci]` in the commit message
+[^1]: Through commit messages or in body.
+[^2]: Generally only for client updates.
