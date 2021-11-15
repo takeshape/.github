@@ -9,35 +9,17 @@ on:
       - main
 
 env:
-  # TARGET_REPOS_PM: |
-  #   takeshape/shape-form
-  #   takeshape/takeshape
-  #   takeshape/takeshape-email
-  #   takeshape/takeshape-routing
-  #   takeshape/takeshape-samples
-  #   takeshape/takeshape-skyword
-  #   takeshape/takeshape.io
-  #   takeshape/vm-nunjucks
-  # FILE_PATTERNS_PM: |
-  #   ^.github/workflows/_pm*
-  #   ^.github/workflows/_release_pull-request-label-check.yml
-  #   ^.github/release-drafter.yml
-  #   ^.github/auto.json
-  #   ^.github/pr-labeler.yml
-  #   ^.github/scripts/*
-  # # Moving toward bundles of functionality
-  # TARGET_REPOS_RELEASE: |
-  #   takeshape/takeshape-gatsby
-  # FILE_PATTERNS_RELEASE: |
-  #   ^.github/workflows/_pm_issues.yml
-  #   ^.github/workflows/_pm_pull-request.yml
-  #   ^.github/workflows/_release*
-  #   ^.github/release-drafter.yml
-  #   ^.github/auto.json
-  #   ^.github/pr-labeler.yml
-  #   ^.github/scripts/*
   TARGET_REPOS_PM: |
-    takeshape/takeshape-starter-auth0-stripe
+    takeshape/shape-form
+    takeshape/takeshape
+    takeshape/takeshape-email
+    takeshape/takeshape-routing
+    takeshape/takeshape-samples
+    takeshape/takeshape-skyword
+    takeshape/takeshape.io
+    takeshape/vm-nunjucks
+  TARGET_REPOS_RELEASE: |
+    takeshape/takeshape-gatsby
   FILE_PATTERNS_PM: |
     .github/workflows/_pm_issues.yml
     .github/workflows/_pm_pull-request.yml
@@ -46,9 +28,6 @@ env:
     .github/auto.json
     .github/pr-labeler.yml
     .github/scripts/*
-  # Moving toward bundles of functionality
-  TARGET_REPOS_RELEASE: |
-    takeshape/takeshape-starter-auth0-stripe
   FILE_PATTERNS_RELEASE: |
     .github/workflows/_pm_issues.yml
     .github/workflows/_pm_pull-request.yml
@@ -67,7 +46,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
 
-      - name: Sync PM Files
+      - name: sync pm prefixed files
         uses: adrianjost/files-sync-action@v1.5.0
         with:
           SRC_ROOT: 'sync'
@@ -76,7 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
           COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
 
-      - name: Sync Release Files
+      - name: sync release prefixed files
         uses: adrianjost/files-sync-action@v1.5.0
         with:
           SRC_ROOT: 'sync'

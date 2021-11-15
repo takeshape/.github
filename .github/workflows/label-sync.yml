@@ -12,15 +12,19 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout repo
+        uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
+      - name: setup node
+        uses: actions/setup-node@v1
         with:
           node-version: 14.x
 
-      - run: |
+      - name: install github-label-sync
+        run: |
           npm install github-label-sync -g
 
-      - env:
+      - name: run label sync script
+        env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
         run: ./labels/sync.sh
