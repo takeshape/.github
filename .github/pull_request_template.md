@@ -11,6 +11,6 @@
 ### Checklist:
 
 - [ ] Create a Test Plan
-- [ ] Changes Communicated In Commits or Body
+- [ ] Changes Communicated (in commits or above)
 - [ ] Docs Updated
 - [ ] Storybook Updated
