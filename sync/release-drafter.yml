@@ -1,0 +1,45 @@
+name-template: "v$RESOLVED_VERSION"
+
+tag-template: "release-v$RESOLVED_VERSION"
+
+template: |
+  $CHANGES
+
+version-resolver:
+  major:
+    labels:
+      - "BREAKING"
+
+  minor:
+    labels:
+      - "feature"
+
+  patch:
+    labels:
+      - "bug"
+      - "chore"
+
+categories:
+  - title: Breaking
+    labels:
+      - "BREAKING"
+
+  - title: New
+    labels:
+      - "feature"
+
+  - title: Bug Fixes
+    labels:
+      - "bug"
+
+  - title: Maintenance
+    labels:
+      - "chore"
+
+  - title: Documentation
+    labels:
+      - "documentation"
+
+exclude-labels:
+  - 'skip changelog'
+  - 'skip release'

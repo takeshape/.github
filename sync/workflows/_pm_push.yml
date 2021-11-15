@@ -1,0 +1,91 @@
+name: PM / Push
+
+on:
+  push:
+    branches: [master, trunk, main]
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - trigger:release
+
+jobs:
+  release-drafter:
+    name: Draft Release
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PROTECTED_PUSH_TOKEN }}
+
+      - name: unshallow
+        run: |
+          git fetch --unshallow --tags
+
+      - name: setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: setup git
+        run: |
+          git config user.name "release-action"
+          git config user.email "releases@noreply.takeshape.io"
+
+      - name: install auto
+        run: |
+          npm install auto --global
+
+      - name: get auto version
+        id: auto
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp ./.github/auto.json ./.autorc.json
+          latest_semver_sha=$(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1)
+          version=$(auto version --from $latest_semver_sha)
+          rm ./.autorc.json
+          echo "::set-output name=version::$version"
+
+      - name: setup pnpm
+        if: steps.auto.outputs.version != ''
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.11.5
+
+      - name: bump version and push
+        id: bump
+        if: steps.auto.outputs.version != ''
+        run: |
+          git pull --ff-only
+          npm version $BUMP -m "Bump version to: %s [skip ci]"
+          git push origin --follow-tags
+        env:
+          BUMP: ${{ steps.auto.outputs.version }}
+
+      - name: get latest tag
+        id: tag
+        continue-on-error: true
+        run: |
+          latest_semver_sha=$(git rev-list --tags="v[0-9]*.[0-9]*.[0-9]*" --max-count=1)
+          if [[ "$latest_semver_sha" != "" ]]; then \
+            latest_tag=$(git describe --tags $latest_semver_sha); \
+            echo "::set-output name=latest_semver_sha::$latest_semver_sha"; \
+            echo "::set-output name=latest_tag::$latest_tag"; \
+            echo "::set-output name=latest_version::${latest_tag//v/}"; \
+          fi
+
+      - name: updating draft release
+        if: ${{ steps.tag.outputs.latest_tag }}
+        id: release
+        uses: takeshape/release-drafter@master
+        with:
+          name: ${{ steps.tag.outputs.latest_tag }}
+          version: ${{ steps.tag.outputs.latest_version }}
+          target-commitish: ${{ steps.tag.outputs.latest_semver_sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

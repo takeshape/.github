@@ -1,0 +1,24 @@
+name: PM / Pull Request
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign-author:
+    name: Assign Author
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: assigning author to pr
+        uses: technote-space/assign-author@v1
+
+  pr-labeler:
+    name: PR Labeler
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: labeling pr
+        uses: TimonVS/pr-labeler-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
