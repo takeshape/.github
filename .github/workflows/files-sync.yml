@@ -4,13 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - sync/workflows/files-sync.yml
-      - sync/workflows/_pm*
-      - sync/workflows/_release*
-      - sync/release-drafter.yml
-      - sync/auto.json
-      - sync/pr-labeler.yml
-      - sync/scripts/*
+      - sync/**/*
     branches:
       - main
 
@@ -45,23 +39,23 @@ env:
   TARGET_REPOS_PM: |
     takeshape/takeshape-starter-auth0-stripe
   FILE_PATTERNS_PM: |
-    ^sync/workflows/_pm*
-    ^sync/workflows/_release_pull-request-label-check.yml
-    ^sync/release-drafter.yml
-    ^sync/auto.json
-    ^sync/pr-labeler.yml
-    ^sync/scripts/*
+    ^.github/workflows/_pm*
+    ^.github/workflows/_release_pull-request-label-check.yml
+    ^.github/release-drafter.yml
+    ^.github/auto.json
+    ^.github/pr-labeler.yml
+    ^.github/scripts/*
   # Moving toward bundles of functionality
   TARGET_REPOS_RELEASE: |
     takeshape/takeshape-starter-auth0-stripe
   FILE_PATTERNS_RELEASE: |
-    ^sync/workflows/_pm_issues.yml
-    ^sync/workflows/_pm_pull-request.yml
-    ^sync/workflows/_release*
-    ^sync/release-drafter.yml
-    ^sync/auto.json
-    ^sync/pr-labeler.yml
-    ^sync/scripts/*
+    ^.github/workflows/_pm_issues.yml
+    ^.github/workflows/_pm_pull-request.yml
+    ^.github/workflows/_release*
+    ^.github/release-drafter.yml
+    ^.github/auto.json
+    ^.github/pr-labeler.yml
+    ^.github/scripts/*
   COMMIT_MESSAGE: "Update file(s) from %SRC_REPO% [skip ci]"
 
 jobs:
@@ -75,7 +69,7 @@ jobs:
       - name: Sync PM Files
         uses: adrianjost/files-sync-action@v1.5.0
         with:
-          SRC_ROOT: 'sync'
+          SRC_ROOT: '/sync'
           FILE_PATTERNS: ${{ env.FILE_PATTERNS_PM }}
           TARGET_REPOS: ${{ env.TARGET_REPOS_PM }}
           GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
@@ -84,7 +78,7 @@ jobs:
       - name: Sync Release Files
         uses: adrianjost/files-sync-action@v1.5.0
         with:
-          SRC_ROOT: 'sync'
+          SRC_ROOT: '/sync'
           FILE_PATTERNS: ${{ env.FILE_PATTERNS_RELEASE }}
           TARGET_REPOS: ${{ env.TARGET_REPOS_RELEASE }}
           GITHUB_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
