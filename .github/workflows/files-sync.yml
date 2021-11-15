@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - .github/workflows/files-sync.yml
-      - .github/workflows/_pm*
-      - .github/workflows/_release*
-      - .github/release-drafter.yml
-      - .github/auto.json
-      - .github/pr-labeler.yml
-      - .github/scripts/*
+      - sync/workflows/files-sync.yml
+      - sync/workflows/_pm*
+      - sync/workflows/_release*
+      - sync/release-drafter.yml
+      - sync/auto.json
+      - sync/pr-labeler.yml
+      - sync/scripts/*
     branches:
       - main
 
@@ -45,23 +45,23 @@ env:
   TARGET_REPOS_PM: |
     takeshape/takeshape-starter-auth0-stripe
   FILE_PATTERNS_PM: |
-    ^.github/workflows/_pm*
-    ^.github/workflows/_release_pull-request-label-check.yml
-    ^.github/release-drafter.yml
-    ^.github/auto.json
-    ^.github/pr-labeler.yml
-    ^.github/scripts/*
+    ^sync/workflows/_pm*
+    ^sync/workflows/_release_pull-request-label-check.yml
+    ^sync/release-drafter.yml
+    ^sync/auto.json
+    ^sync/pr-labeler.yml
+    ^sync/scripts/*
   # Moving toward bundles of functionality
   TARGET_REPOS_RELEASE: |
     takeshape/takeshape-starter-auth0-stripe
   FILE_PATTERNS_RELEASE: |
-    ^.github/workflows/_pm_issues.yml
-    ^.github/workflows/_pm_pull-request.yml
-    ^.github/workflows/_release*
-    ^.github/release-drafter.yml
-    ^.github/auto.json
-    ^.github/pr-labeler.yml
-    ^.github/scripts/*
+    ^sync/workflows/_pm_issues.yml
+    ^sync/workflows/_pm_pull-request.yml
+    ^sync/workflows/_release*
+    ^sync/release-drafter.yml
+    ^sync/auto.json
+    ^sync/pr-labeler.yml
+    ^sync/scripts/*
   COMMIT_MESSAGE: "Update file(s) from %SRC_REPO% [skip ci]"
 
 jobs:
