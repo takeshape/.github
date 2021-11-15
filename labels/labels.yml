@@ -1,107 +1,26 @@
-# Types
-- name: "type: bug 🐛"
+- name: "bug"
   color: "ECA8A8"
   description: "Something isn't working"
 
-- name: "type: documentation ✏️"
+- name: "documentation"
   color: "A8E8EC"
   description: "Improvements or additions to documentation"
 
-- name: "type: feature 🔨"
+- name: "feature"
   color: "B1ECA8"
   description: "New feature or request"
 
-- name: "type: chore 🧺"
+- name: "chore"
   color: "F7FC97"
   description: "Clean up, refactors, general maintenance"
 
-- name: "type: question ❓"
-  color: "ECA8EC"
-  description: "Further information is requested"
-
-- name: "type: design 📐"
-  color: "ECB5A8"
-
-- name: "type: breaking"
+- name: "BREAKING"
   color: "ECA8A8"
 
-# Statuses
-- name: "status: released ✌️"
-  color: "cccccc"
-  description: "This issue or pull request has been released"
-
-- name: "status: duplicate"
-  color: "cccccc"
-  description: "This issue or pull request already exists"
-
-- name: "status: help wanted"
-  color: "bfe5bf"
-  description: "Extra attention is needed"
-
-- name: "status: invalid"
-  color: "cccccc"
-  description: "This doesn't seem right"
-
-- name: "status: good starter issue"
-  color: "bfe5bf"
-
-- name: "status: wontfix ⛔️"
-  color: "cccccc"
-  description: "This will not be worked on"
-
-- name: "status: blocked ✋"
-  color: "EC7A7C"
-
-- name: "status: blocking ✋"
-  color: "EC7A7C"
-
-# Priorities
-- name: "priority: low"
-  color: "ADECA8"
-
-- name: "priority: medium"
-  color: "ECEAA8"
-
-- name: "priority: high"
-  color: "ECA8A8"
-
-- name: "priority: critical"
-  color: "EC8585"
-
-# Points
-- name: "point: 0"
-  color: "fff7cc"
-  description: "XS — No work, just a record."
-
-- name: "point: 1"
-  color: "ffef99"
-  description: "S — Issue is well-understood, minimal complexity, likely a quick change"
-
-- name: "point: 2"
-  color: "ffe766"
-  description: "M — A small amount of research is needed and the change will require more time or effort"
-
-- name: "point: 3"
-  color: "ffdf32"
-  description: "L — Substantial additional research is needed and the structural change necessary"
-
-- name: "point: 5"
-  color: "ffd700"
-  description: "XL — Partially understood, requires additional research and major changes necessary"
-
-- name: "point: 8"
-  color: "e5c100"
-  description: "XXL — Poorly understood, requires substantial research before complexity can be assessed"
-
-- name: "point: 13"
-  color: "b29600"
-  description: "XXXL — Galaxy brain. Don't."
-
-- name: "point: 21"
-  color: "7f6b00"
-  description: "XXXXL — Stop!"
-
-# Releases
-- name: "release: skip"
+- name: "skip release"
   color: "cfd3d7"
   description: "Explicitly skip triggering a bump in the next release"
+
+- name: "skip changelog"
+  color: "cfd3d7"
+  description: "Do not include this PR in the release notes, but still trigger a release version"

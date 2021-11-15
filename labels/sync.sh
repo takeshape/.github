@@ -13,4 +13,4 @@ fi
 
 while IFS= read -r repo; do
   github-label-sync --labels ${labels} --access-token ${access_token} ${repo}
-done < "${repos}"
+done <"${repos}"
