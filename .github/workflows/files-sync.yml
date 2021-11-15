@@ -21,16 +21,14 @@ env:
   TARGET_REPOS_RELEASE: |
     takeshape/takeshape-gatsby
   FILE_PATTERNS_PM: |
-    .github/workflows/_pm_issues.yml
-    .github/workflows/_pm_pull-request.yml
+    .github/workflows/_pm_*
     .github/workflows/_release_pull-request-label-check.yml
     .github/release-drafter.yml
     .github/auto.json
     .github/pr-labeler.yml
     .github/scripts/*
   FILE_PATTERNS_RELEASE: |
-    .github/workflows/_pm_issues.yml
-    .github/workflows/_pm_pull-request.yml
+    .github/workflows/_pm_*
     .github/workflows/_release*
     .github/release-drafter.yml
     .github/auto.json
