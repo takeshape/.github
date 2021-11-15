@@ -6,13 +6,12 @@ on:
       - .github/workflows/files-sync.yml
       - .github/workflows/_pm*
       - .github/workflows/_release*
-      - .github/issue-branch.yml
       - .github/release-drafter.yml
       - .github/auto.json
       - .github/pr-labeler.yml
       - .github/scripts/*
     branches:
-      - trunk
+      - main
 
 env:
   TARGET_REPOS_PM: |
@@ -28,7 +27,6 @@ env:
     ^.github/workflows/_pm*
     ^.github/workflows/_release_pull-request-label-check.yml
     ^.github/release-drafter.yml
-    ^.github/issue-branch.yml
     ^.github/auto.json
     ^.github/pr-labeler.yml
     ^.github/scripts/*
@@ -40,7 +38,6 @@ env:
     ^.github/workflows/_pm_pull-request.yml
     ^.github/workflows/_release*
     ^.github/release-drafter.yml
-    ^.github/issue-branch.yml
     ^.github/auto.json
     ^.github/pr-labeler.yml
     ^.github/scripts/*

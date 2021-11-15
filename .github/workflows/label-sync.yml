@@ -5,7 +5,7 @@ on:
     - cron: "*/30 * * * *"
   push:
     branches:
-      - trunk
+      - main
     paths:
       - 'labels/*'
 
