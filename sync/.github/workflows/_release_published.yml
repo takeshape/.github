@@ -19,7 +19,7 @@ jobs:
           token: ${{ secrets.PROTECTED_PUSH_TOKEN }}
 
       - name: Setup node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
@@ -35,7 +35,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.11.5
+          version: 6.22.2
           run_install: |
             - args: [--frozen-lockfile, --strict-peer-dependencies]
 
