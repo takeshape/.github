@@ -22,25 +22,19 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ matrix.node-version }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-pnpm
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.11.5
-          run_install: |
-            - args: [--frozen-lockfile, --strict-peer-dependencies]
+          version: 6.22.2
+          
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       - name: Lint packages
         run: pnpm run lint
@@ -68,25 +62,19 @@ jobs:
         run: |
           git fetch --unshallow --tags
 
-      - name: Setup node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ matrix.node-version }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-pnpm
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.11.5
-          run_install: |
-            - args: [--frozen-lockfile, --strict-peer-dependencies]
+          version: 6.22.2
+          
+      - name: Setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       - name: Setup git
         run: |
@@ -130,17 +118,6 @@ jobs:
             echo "::set-output name=latest_tag::$latest_tag"; \
             echo "::set-output name=latest_version::${latest_tag//v/}"; \
           fi
-
-      # - name: Updating draft release
-      #   if: ${{ steps.tag.outputs.latest_tag }}
-      #   id: release
-      #   uses: takeshape/release-drafter@master
-      #   with:
-      #     name: ${{ steps.tag.outputs.latest_tag }}
-      #     version: ${{ steps.tag.outputs.latest_version }}
-      #     commitish: ${{ steps.tag.outputs.latest_semver_sha }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Updating draft release
         if: ${{ steps.tag.outputs.latest_tag }}
