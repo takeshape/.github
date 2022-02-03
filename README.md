@@ -18,4 +18,4 @@ Sync workflows and related config files. Right now the following files are synce
 - `.github/auto.json` - config for [Auto](https://github.com/intuit/auto)
 - `.github/release-drafter.yml` - config for the [Release Drafter](https://github.com/marketplace/actions/release-drafter) action
 
-..
+...
