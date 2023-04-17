@@ -11,7 +11,6 @@ on:
 env:
   TARGET_REPOS_PM: |
     takeshape/shape-form
-    takeshape/takeshape
     takeshape/takeshape-email
     takeshape/takeshape-routing
     takeshape/takeshape-samples
