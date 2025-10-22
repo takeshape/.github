@@ -1,10 +1,10 @@
-### Test Plan (Steps to test):
+### Test Plan
 
 1. 
 1. 
 1. 
 
-### Checklist:
+### Checklist
 
 - [ ] Create a Test Plan
 - [ ] Changes Communicated (in commits or above)
